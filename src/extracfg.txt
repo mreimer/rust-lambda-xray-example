@@ -1,0 +1,8 @@
+# set debug level
+# loggingLevel=debug
+
+# set aws profile
+# awsProfile=default
+
+# set aws credential file path
+# awsCredsFile=~/.aws/credentials

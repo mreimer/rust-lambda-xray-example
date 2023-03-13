@@ -1,0 +1,8 @@
+/target
+/infrastructure/.terraform/
+/test/outputs/
+/.cargo/
+/.idea/
+**/.DS_Store
+**/terraform.tfstate
+src/**/target/

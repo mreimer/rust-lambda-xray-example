@@ -1,0 +1,23 @@
+[package]
+name = "lambda-xray"
+version = "0.0.1"
+edition = "2021"
+
+[[bin]]
+name = "handler"
+path = "handlers/main.rs"
+
+[dependencies]
+lambda_runtime = "0.7.3"
+serde_json = "1.0.94"
+anyhow = "1.0.69"
+tokio = { version = "1.26.0", features = ["full"] }
+tracing-subscriber = { version = "0.3.16", features = ["env-filter", "json"] }
+tracing = { version = "0.1.37", features = ["attributes"] }
+tracing-opentelemetry = "0.18.0"
+opentelemetry = { version = "0.18.0", features = ["rt-tokio", "trace"] }
+opentelemetry-aws = "0.6.0"
+opentelemetry-semantic-conventions = "0.10.0"
+opentelemetry-otlp = "0.11.0"
+gethostname = "0.4.1"
+opentelemetry_sdk = "0.18.0"
