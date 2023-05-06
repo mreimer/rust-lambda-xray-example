@@ -11,6 +11,7 @@ use tracing::info;
 use tracing_subscriber::prelude::*;
 use tracing_subscriber::Registry;
 use tracing_subscriber::{fmt, EnvFilter};
+use tracing::instrument;
 
 fn opentelemetry_tracer(app_name: &str, version: &str) -> Result<trace::Tracer> {
     global::set_text_map_propagator(XrayPropagator::new());
@@ -62,6 +63,7 @@ pub fn tracer_init(tracer: trace::Tracer) {
         .init();
 }
 
+//#[instrument]
 async fn handler(event: LambdaEvent<Value>) -> Result<Value, Error> {
     let (event, _context) = event.into_parts();
     let first_name = event["firstName"].as_str().unwrap_or("world");
@@ -75,7 +77,7 @@ async fn main() -> Result<(), Error> {
     let provider = tracer
         .provider()
         .context("Couldn't get provider from tracer")?;
-    tracer_init(tracer);
+//    tracer_init(tracer);
 
     info!("Starting up.");
 
